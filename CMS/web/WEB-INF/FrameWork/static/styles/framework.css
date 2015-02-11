@@ -1,0 +1,227 @@
+body {
+    font-family: "Helvetica Neue", Helvetica, "Microsoft Yahei", "Wenquanyi Micro Hei", Arial, sans-serif;
+}
+
+.menu-header {
+    height: 19px;
+    background-color: #42B2FB;
+    border-right: 1px solid #2090d9;
+    border-bottom: 1px solid #42B2FB;;
+    border-top: 1px solid #42B2FB;
+    /*box-shadow:1px 0 0 #64d4fd;*/
+}
+
+.menu-header div {
+    height: 19px;
+    font-size: 15px;
+    color: #ffffff;
+    font-weight: normal;
+    line-height: 19px;
+    text-align: center;
+}
+
+#header {
+    height: 50px;
+    background-color: #fbfbfb;
+}
+
+#footer {
+    height: 50px;
+    background-color: #fbfbfb;
+}
+
+#menu {
+    width: 200px;
+    background-color: #fbfbfb;
+
+}
+
+#main, #main-tabs {
+    background-color: #fbfbfb;
+    border-top: 1px solid #42B2FB;
+}
+
+iframe {
+    border: none;
+    width: 100%;
+    height: 100%;
+    margin: -2px 0px -2px -2px;
+}
+
+#main-tabs .tabs li {
+    padding-top: 0px;
+}
+
+#main-tabs .tabs,
+#main-tabs .tabs-tool {
+    border-color: #95b8e7;
+}
+
+#main-tabs .tabs-header,
+#main-tabs .tabs-tool {
+    background-color: #42B2FB;
+}
+
+#main-tabs .tabs li.tabs-selected a.tabs-inner {
+    padding: 0 15px;
+    background: #ffffff;
+    border-bottom-color: #ffffff;
+    border-top: 2px solid #ff7d23;
+    border-left-width: 0px;
+    border-right-width: 0px;
+}
+
+#main-tabs .tabs li.tabs-selected a.tabs-inner:hover {
+    background: #ffffff;
+    color: #0e2d5f;
+}
+
+#main-tabs .tabs-title {
+    font-size: 13px;
+}
+
+#main-tabs .tabs li a.tabs-inner {
+    color: #ffffff;
+    -webkit-border-radius: 0;
+    border-radius: 0;
+    border-color: #2090d9;
+    border-bottom-color: #95b8e7;
+    background: #42B2FB;
+}
+
+#main-tabs .tabs li a.tabs-inner:hover {
+    background: #2673ec;
+    color: #fff;
+    filter: none;
+}
+
+#main-tabs .tabs-tool {
+    border-top: 0;
+    border-right: 0;
+    border-left: 0;
+}
+
+#main-tabs .l-btn-plain {
+    margin-top: 2px;
+}
+
+#main-tabs .tabs-selected .tabs-title {
+    font-size: 13px;
+    color: #000000;
+}
+
+#main-tabs .tabs-tool a:hover {
+    background-color: #9cc8f7;
+    border-color: #22A7F0;
+}
+
+/**************功能菜单***************/
+#menu {
+    width: 198px;
+    max-width: 360px;
+    background: #f7f7f9;
+    padding-left: 0px;
+    margin: 0px;
+}
+
+#menu ul {
+    list-style-type: none;
+    padding-left: 0px;
+}
+
+#menu .title {
+    cursor: pointer;
+    display: block;
+    padding: 7px 7px 7px 42px;
+    color: #4D4D4D;
+    font-size: 14px;
+    font-weight: 700;
+    border-bottom: 1px solid #CCC;
+    position: relative;
+    -webkit-transition: all 0.4s ease;
+    -o-transition: all 0.4s ease;
+    transition: all 0.4s ease;
+}
+
+#menu li:first-child .title {
+    /*border-top: 1px solid #CCC;*/
+}
+
+#menu li i {
+    position: absolute;
+    top: 8px;
+    left: 12px;
+    font-size: 14px;
+    color: #4D4D4D;
+    -webkit-transition: all 0.4s ease;
+    -o-transition: all 0.4s ease;
+    transition: all 0.4s ease;
+}
+
+#menu li i.fa-chevron-down {
+    right: 12px;
+    left: auto;
+    font-size: 16px;
+}
+
+#menu li .open {
+    color: #ff7d23;
+    /*background-color: #2673ec;*/
+    /*border-bottom: 0;*/
+    font-weight: normal;
+}
+
+#menu li:first-child .open {
+    /*border-top: 1px solid #2090d9;*/
+}
+
+#menu li .open i {
+    color: #ff7d23;
+    font-weight: normal;
+}
+
+#menu li .open i.fa-chevron-down {
+    -webkit-transform: rotate(180deg);
+    -ms-transform: rotate(180deg);
+    -o-transform: rotate(180deg);
+    transform: rotate(180deg);
+}
+
+/**
+ * Submenu
+ -----------------------------*/
+#menu .item {
+    display: none;
+    background: #FBFBFB;
+    font-size: 14px;
+}
+
+#menu .item li {
+    border-bottom: 1px solid #CCC;
+}
+
+#menu .item a {
+    display: block;
+    text-decoration: none;
+    color: #4D4D4D;
+    padding: 7px 7px 7px 42px;
+    -webkit-transition: all 0.25s ease;
+    -o-transition: all 0.25s ease;
+    transition: all 0.25s ease;
+}
+
+#menu .item a:hover {
+    background: #42B2FB;
+    color: #FFF;
+}
+
+#menu .item .selected{
+    border-right: 2px solid #ff7d23;
+
+}
+#menu .item .selected a{
+    color: #ff7d23;
+}
+#menu .item li{
+    cursor: pointer;
+}

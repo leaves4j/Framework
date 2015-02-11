@@ -1,0 +1,16 @@
+<component name="libraryTable">
+  <library name="jQuery-2.1.3" type="javaScript">
+    <properties>
+      <option name="frameworkName" value="jQuery" />
+      <option name="frameworkVersion" value="1.3." />
+      <sourceFilesUrls>
+        <item url="file://$PROJECT_DIR$/CMS/web/WEB-INF/FrameWork/static/js/jquery-2.1.3.js" />
+      </sourceFilesUrls>
+    </properties>
+    <CLASSES>
+      <root url="file://$PROJECT_DIR$/CMS/web/WEB-INF/FrameWork/lib/jquery/jquery-2.1.3.js" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>

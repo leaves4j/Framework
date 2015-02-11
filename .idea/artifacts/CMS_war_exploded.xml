@@ -1,0 +1,24 @@
+<component name="ArtifactManager">
+  <artifact type="exploded-war" name="CMS:war exploded">
+    <output-path>$PROJECT_DIR$/out/artifacts/CMS_war_exploded</output-path>
+    <root id="root">
+      <element id="directory" name="WEB-INF">
+        <element id="directory" name="lib">
+          <element id="library" level="module" name="c3p0" module-name="CMS" />
+          <element id="library" level="module" name="guava-17.0-rc2.jar" module-name="CMS" />
+          <element id="library" level="module" name="Hibernate 4.2.2-4.2.2" module-name="CMS" />
+          <element id="library" level="module" name="mysql-connector-java" module-name="CMS" />
+          <element id="library" level="module" name="Spring Data JPA-1.3.3" module-name="CMS" />
+          <element id="library" level="module" name="Spring MVC-4.0.6.RELEASE" module-name="CMS" />
+          <element id="library" level="module" name="Spring Web Services-2.0.2" module-name="CMS" />
+          <element id="library" level="module" name="Spring-4.0.6.RELEASE" module-name="CMS" />
+          <element id="library" level="module" name="aspect" module-name="CMS" />
+        </element>
+        <element id="directory" name="classes">
+          <element id="module-output" name="CMS" />
+        </element>
+      </element>
+      <element id="javaee-facet-resources" facet="CMS/web/Web" />
+    </root>
+  </artifact>
+</component>

@@ -1,0 +1,15 @@
+<component name="libraryTable">
+  <library name="aspect">
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/CMS/lib/aspectjrt.jar!/" />
+      <root url="jar://$PROJECT_DIR$/CMS/lib/aspectjtools.jar!/" />
+      <root url="jar://$PROJECT_DIR$/CMS/lib/aspectjweaver.jar!/" />
+      <root url="jar://$PROJECT_DIR$/CMS/lib/org.aspectj.matcher.jar!/" />
+      <root url="file://$PROJECT_DIR$" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES>
+      <root url="file://$PROJECT_DIR$/CMS/src" />
+    </SOURCES>
+  </library>
+</component>

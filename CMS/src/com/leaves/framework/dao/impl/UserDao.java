@@ -22,8 +22,16 @@ public class UserDao extends AbstractHibernateDao<User> implements IUserDao {
     @SuppressWarnings("unchecked")
     public List<User> findByCode(String code) {
         return this.getCurrentSession()
-                .createQuery("from User user where user.code=?")
+                .createQuery("from User user where user.code= ?")
                 .setString(0, code)
+                .list();
+
+    }
+
+    @SuppressWarnings("unchecked")
+    public List<User> getUserInfo() {
+        return this.getCurrentSession()
+                .createQuery("select code,name,email,description,state from User user")
                 .list();
 
     }

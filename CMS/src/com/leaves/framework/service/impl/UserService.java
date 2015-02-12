@@ -31,9 +31,13 @@ public class UserService implements IUserService {
         return userDao.findAll();
     }
 
+    public List<User> getUserInfo() {
+        return userDao.getUserInfo();
+    }
+
     @Override
     public List<User> findAllByPage(int currentPage, int pageSize) {
-        return userDao.findAllByPage(currentPage,pageSize);
+        return userDao.findAllByPage(currentPage, pageSize);
     }
 
     @Override

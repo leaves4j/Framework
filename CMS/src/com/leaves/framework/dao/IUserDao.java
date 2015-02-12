@@ -11,4 +11,6 @@ import java.util.List;
 public interface IUserDao extends IOperations<User> {
 
     List<User> findByCode(final String code);
+
+    List<User> getUserInfo();
 }

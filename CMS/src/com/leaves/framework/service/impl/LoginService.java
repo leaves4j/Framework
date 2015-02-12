@@ -4,6 +4,7 @@ import com.leaves.framework.dao.impl.UserDao;
 import com.leaves.framework.model.User;
 import com.leaves.framework.service.ILoginService;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import javax.annotation.Resource;
 import java.util.List;
@@ -11,7 +12,8 @@ import java.util.List;
 /**
  * Created by jiangq on 2015/1/5.
  */
-@Service(value = "loginService")
+@Service("loginService")
+@Transactional
 public class LoginService implements ILoginService {
     @Resource(name = "userDao")
     UserDao userDao;

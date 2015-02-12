@@ -54,7 +54,7 @@
 
             </div>
             <div title="Help" data-options="closable:true">
-                <iframe src="" style="background-color: #F9F9F9"></iframe>
+                <iframe src=""></iframe>
             </div>
         </div>
     </div>

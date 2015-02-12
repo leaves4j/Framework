@@ -16,7 +16,7 @@ import java.util.List;
  * Created by leaves on 2014/10/14.
  */
 @Controller
-public class UserController {
+public class IndexController {
     @Resource(name = "userService")
     private IUserService userService;
 

@@ -64,8 +64,8 @@ iframe {
 
 #main-tabs .tabs li.tabs-selected a.tabs-inner {
     padding: 0 15px;
-    background: #ffffff;
-    border-bottom-color: #ffffff;
+    background: #fbfbfb;
+    border-bottom-color: #fbfbfb;
     border-top: 2px solid #ff7d23;
     border-left-width: 0px;
     border-right-width: 0px;

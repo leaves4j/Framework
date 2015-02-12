@@ -138,5 +138,7 @@
     </orderEntry>
     <orderEntry type="library" name="jQuery-2.1.3" level="project" />
     <orderEntry type="library" scope="PROVIDED" name="Tomcat 8.0.15" level="application_server_libraries" />
+    <orderEntry type="library" name="org.codehaus.jackson:jackson-core-asl:1.9.12" level="project" />
+    <orderEntry type="library" name="org.codehaus.jackson:jackson-mapper-asl:1.9.13" level="project" />
   </component>
 </module>

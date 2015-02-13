@@ -4,6 +4,7 @@
   Time: 15:45
   Description:
 --%>
+<%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -15,8 +16,14 @@
     <!--[if lte IE 8]>
     <script src="lib/html5shiv.min.js"></script>
     <script src="lib/respond.min.js"></script><![endif]-->
+    <script type="text/javascript" >
+        var userList='${userList}';
+    </script>
 </head>
 <body>
+<div class="toolbar">
+
+</div>
 <link href="lib/font-awesome-4.2.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
 <link href="lib/jquery-easyui-1.4.1/themes/own/easyui.css" rel="stylesheet" type="text/css">
 <link href="lib/jquery-easyui-1.4.1/themes/icon.css" rel="stylesheet" type="text/css">

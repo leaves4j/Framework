@@ -70,8 +70,8 @@
 <script src="lib/jquery/jquery-1.11.2.min.js"></script>
 <![endif]-->
 <script src="lib/jquery-easyui-1.4.1/jquery.easyui.min.js"></script>
-<link href="static/styles/framework.css" rel="stylesheet" type="text/css">
-<script src="static/js/framework.js"></script>
+<link href="static/styles/index.css" rel="stylesheet" type="text/css">
+<script src="static/js/index.js"></script>
 </body>
 
 </html>

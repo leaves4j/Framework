@@ -1,0 +1,11 @@
+body {
+    font-family: "Helvetica Neue", Helvetica, "Microsoft Yahei", "Wenquanyi Micro Hei", Arial, sans-serif;
+    margin: 0px;
+}
+
+.fw-toolbar {
+    position: fixed;
+    height: 50px;
+    width: 100%;
+    border-bottom: 1px solid #D3D3D3;
+}

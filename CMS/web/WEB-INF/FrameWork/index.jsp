@@ -59,7 +59,7 @@
         </div>
     </div>
 </div>
-<link href="lib/font-awesome-4.2.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+<link href="lib/font-awesome-4.3.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
 <link href="lib/jquery-easyui-1.4.1/themes/own/easyui.css" rel="stylesheet" type="text/css">
 
 <link href="lib/jquery-easyui-1.4.1/themes/icon.css" rel="stylesheet" type="text/css">

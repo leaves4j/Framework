@@ -23,23 +23,20 @@
     </script>
 </head>
 <body>
-<%--<div class="fw-toolbar">--%>
-    <%--<div class="easyui-panel" style="padding:5px;">--%>
-    <%--<a href="#" class="easyui-linkbutton" data-options="plain:true,iconCls:'icon-cancel'">Cancel</a>--%>
-    <%--<a href="#" class="easyui-linkbutton" data-options="plain:true,iconCls:'icon-reload'">Refresh</a>--%>
-    <%--<a href="#" class="easyui-linkbutton" data-options="plain:true,iconCls:'icon-search'">Search</a>--%>
-    <%--<a href="#" class="easyui-linkbutton" data-options="plain:true">Text Button</a>--%>
-    <%--<a href="#" class="easyui-linkbutton" data-options="plain:true,iconCls:'icon-print'">Print</a>--%>
-    <%--<a href="#" class="easyui-linkbutton" data-options="plain:true,iconCls:'icon-help'"> </a>--%>
-    <%--<a href="#" class="easyui-linkbutton" data-options="plain:true,iconCls:'icon-save'"></a>--%>
-    <%--<a href="#" class="easyui-linkbutton" data-options="plain:true,iconCls:'icon-back'"></a>--%>
-    <%--</div>--%>
-<%--</div>--%>
-<toolbar>
-    <button ><i class=""/>新增</button>
-    <button ></button>
-</toolbar>
-<link href="lib/font-awesome-4.2.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+<div class="fw-toolbar">
+    <div class="easyui-panel" style="padding:5px;">
+    <a href="#" class="easyui-linkbutton" data-options="plain:true,iconCls:'fa fa-plus'">Cancel</a>
+    <a href="#" class="easyui-linkbutton" data-options="plain:true,iconCls:'icon-reload'">Refresh</a>
+    <a href="#" class="easyui-linkbutton" data-options="plain:true,iconCls:'icon-search'">Search</a>
+    <a href="#" class="easyui-linkbutton" data-options="plain:true">Text Button</a>
+    <a href="#" class="easyui-linkbutton" data-options="plain:true,iconCls:'icon-print'">Print</a>
+    <a href="#" class="easyui-linkbutton" data-options="plain:true,iconCls:'icon-help'"> </a>
+    <a href="#" class="easyui-linkbutton" data-options="plain:true,iconCls:'icon-save'"></a>
+    <a href="#" class="easyui-linkbutton" data-options="plain:true,iconCls:'icon-back'"></a>
+    </div>
+</div>
+<div><i class="fa fa-plus"></i></div>
+<link href="lib/font-awesome-4.3.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
 <link href="lib/jquery-easyui-1.4.1/themes/own/easyui.css" rel="stylesheet" type="text/css">
 <link href="lib/jquery-easyui-1.4.1/themes/icon.css" rel="stylesheet" type="text/css">
 <!--[if !IE]> -->

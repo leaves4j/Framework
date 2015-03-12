@@ -1,11 +1,63 @@
 body {
     font-family: "Helvetica Neue", Helvetica, "Microsoft Yahei", "Wenquanyi Micro Hei", Arial, sans-serif;
-    margin: 0px;
+    margin: 0;
+}
+
+html {
+    height: 100%;
 }
 
 .fw-toolbar {
-    position: fixed;
-    height: 50px;
     width: 100%;
-    border-bottom: 1px solid #D3D3D3;
+    position: fixed;
+    margin-top: 3px;
+    top: 0;
+    z-index: 9999;
+}
+
+.fw-toolbar .panel-body {
+    border-width: 0 0 1px 0;
+    background-color: #fbfbfb;
+    font-size: 14px;
+}
+
+.fw-toolbar + div {
+    margin-top: 40px;
+    padding: 5px;
+}
+
+.l-btn-icon {
+    font-size: inherit;
+}
+
+.l-btn-text {
+    font-size: 14px;
+}
+
+.fw-form-title {
+    font-size: 14px;
+    font-weight: bold;
+    padding: 5px 0;
+    margin-bottom: 10px;
+    border-bottom: 1px solid #ccc;
+}
+
+.fw-form {
+    margin: 0;
+    padding: 10px 30px;
+}
+
+.fw-form > div {
+    margin-bottom: 5px;
+}
+
+.fw-form > div label {
+    display: inline-block;
+    width: 25%;
+    line-height: 22px;
+}
+
+.fw-form > div span {
+    height: 26px;
+    width: 75%;
 }

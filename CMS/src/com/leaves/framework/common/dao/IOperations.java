@@ -9,7 +9,7 @@ import java.util.List;
  */
 public interface IOperations<T extends Serializable> {
 
-    T findOne(final long id);
+    T findOne(final String id);
 
     List<T> findAll();
 
@@ -19,9 +19,11 @@ public interface IOperations<T extends Serializable> {
 
     T update(final T entity);
 
+    T createOrUpdate(T entity);
+
     void delete(final T entity);
 
-    void deleteById(final long entityId);
+    void deleteById(final String entityId);
 
 }
 

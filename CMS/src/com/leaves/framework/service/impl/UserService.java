@@ -22,7 +22,7 @@ public class UserService implements IUserService {
 
 
     @Override
-    public User findOne(long id) {
+    public User findOne(String id) {
         return userDao.findOne(id);
     }
 
@@ -31,13 +31,23 @@ public class UserService implements IUserService {
         return userDao.findAll();
     }
 
-    public List<User> getUserInfo() {
-        return userDao.getUserInfo();
+    @Override
+    public List<User> getUserList(int currentPage, int pageSize) {
+        return userDao.getUserList(currentPage, pageSize);
     }
 
     @Override
     public List<User> findAllByPage(int currentPage, int pageSize) {
         return userDao.findAllByPage(currentPage, pageSize);
+    }
+    @Override
+
+    public String addUser(User user) {
+        List<User> list = userDao.findByCode(user.getCode());
+        if (list.size() == 0) {
+            userDao.create(user);
+            return "ok";
+        } else return "existed";
     }
 
     @Override
@@ -51,12 +61,17 @@ public class UserService implements IUserService {
     }
 
     @Override
+    public User createOrUpdate(User user) {
+        return userDao.createOrUpdate(user);
+    }
+
+    @Override
     public void delete(User user) {
         userDao.delete(user);
     }
 
     @Override
-    public void deleteById(long Id) {
+    public void deleteById(String Id) {
         userDao.deleteById(Id);
     }
 }

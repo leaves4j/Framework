@@ -12,5 +12,5 @@ public interface IUserDao extends IOperations<User> {
 
     List<User> findByCode(final String code);
 
-    List<User> getUserInfo();
+    List<User> getUserList(int currentPage, int pageSize);
 }

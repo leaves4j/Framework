@@ -1,37 +1,57 @@
 package com.leaves.framework.model;
 
+import org.hibernate.annotations.DynamicInsert;
+import org.hibernate.annotations.DynamicUpdate;
+import org.hibernate.annotations.GenericGenerator;
+
 import javax.persistence.*;
 import java.io.Serializable;
-import java.sql.Timestamp;
+
+import java.util.Date;
 import java.util.Set;
 
 /**
  * Created by jiangq on 2014/12/25.
  */
 @Entity
+@DynamicInsert()
+@DynamicUpdate()
 @Table(name = "sys_user", schema = "", catalog = "FleaMarket")
 public class User implements Serializable {
-    private long id;
+    private String id;
     private String code;
     private String name;
     private String password;
     private String email;
     private String description;
-    private Timestamp createTime;
-    private Long departmentId;
-    private Long organizationId;
+    private Date createTime;
+    private long departmentId;
+    private long organizationId;
     private String state;
     private Set<Role> roles;
 
+    public User(String id, String code, String name, String email, String description, Date createTime, String state) {
+        this.id = id;
+        this.code = code;
+        this.name = name;
+        this.email = email;
+        this.description = description;
+        this.createTime = createTime;
+        this.state = state;
+    }
+
+    public User() {
+    }
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(generator = "idGenerator")
+    @GenericGenerator(name = "idGenerator", strategy = "uuid")
     @Column(name = "ID")
-    public long getId() {
+    public String getId() {
         return id;
     }
 
-    public void setId(long id) {
+    public void setId(String id) {
         this.id = id;
     }
 
@@ -86,12 +106,12 @@ public class User implements Serializable {
     }
 
     @Basic
-    @Column(name = "CreateTime")
-    public Timestamp getCreateTime() {
+    @Column(name = "CreateTime", updatable = false)
+    public Date getCreateTime() {
         return createTime;
     }
 
-    public void setCreateTime(Timestamp createTime) {
+    public void setCreateTime(Date createTime) {
         this.createTime = createTime;
     }
 
@@ -147,39 +167,36 @@ public class User implements Serializable {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
 
-        User that = (User) o;
+        User user = (User) o;
 
-        if (id != that.id) return false;
-        if (code != null ? !code.equals(that.code) : that.code != null) return false;
-        if (createTime != null ? !createTime.equals(that.createTime) : that.createTime != null) return false;
-        if (departmentId != null ? !departmentId.equals(that.departmentId) : that.departmentId != null) return false;
-        if (description != null ? !description.equals(that.description) : that.description != null) return false;
-        if (email != null ? !email.equals(that.email) : that.email != null) return false;
-        if (name != null ? !name.equals(that.name) : that.name != null) return false;
-        if (organizationId != null ? !organizationId.equals(that.organizationId) : that.organizationId != null)
-            return false;
-        if (password != null ? !password.equals(that.password) : that.password != null) return false;
-        if (roles != null ? !roles.equals(that.roles) : that.roles != null) return false;
-        if (state != null ? !state.equals(that.state) : that.state != null) return false;
+        if (departmentId != user.departmentId) return false;
+        if (organizationId != user.organizationId) return false;
+        if (code != null ? !code.equals(user.code) : user.code != null) return false;
+        if (createTime != null ? !createTime.equals(user.createTime) : user.createTime != null) return false;
+        if (description != null ? !description.equals(user.description) : user.description != null) return false;
+        if (email != null ? !email.equals(user.email) : user.email != null) return false;
+        if (id != null ? !id.equals(user.id) : user.id != null) return false;
+        if (name != null ? !name.equals(user.name) : user.name != null) return false;
+        if (password != null ? !password.equals(user.password) : user.password != null) return false;
+        if (roles != null ? !roles.equals(user.roles) : user.roles != null) return false;
+        if (state != null ? !state.equals(user.state) : user.state != null) return false;
 
         return true;
     }
 
     @Override
     public int hashCode() {
-        int result = (int) (id ^ (id >>> 32));
+        int result = id != null ? id.hashCode() : 0;
         result = 31 * result + (code != null ? code.hashCode() : 0);
         result = 31 * result + (name != null ? name.hashCode() : 0);
         result = 31 * result + (password != null ? password.hashCode() : 0);
         result = 31 * result + (email != null ? email.hashCode() : 0);
         result = 31 * result + (description != null ? description.hashCode() : 0);
         result = 31 * result + (createTime != null ? createTime.hashCode() : 0);
-        result = 31 * result + (departmentId != null ? departmentId.hashCode() : 0);
-        result = 31 * result + (organizationId != null ? organizationId.hashCode() : 0);
+        result = 31 * result + (int) (departmentId ^ (departmentId >>> 32));
+        result = 31 * result + (int) (organizationId ^ (organizationId >>> 32));
         result = 31 * result + (state != null ? state.hashCode() : 0);
         result = 31 * result + (roles != null ? roles.hashCode() : 0);
         return result;
     }
-
-
 }

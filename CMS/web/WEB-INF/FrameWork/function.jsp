@@ -8,7 +8,7 @@
     <li>
         <div class="title"><i class="fa fa-paint-brush"></i>基础设置<i class="fa fa-chevron-down"></i></div>
         <ul class="item">
-            <li><a data-value="yhgl" data-uri="/user" data-title="用户管理">用户管理</a></li>
+            <li><a data-value="yhgl" data-uri="/users" data-title="用户管理">用户管理</a></li>
             <li><a>菜单菜单2</a></li>
             <li><a>CSS</a></li>
             <li><a>Maquetacion web</a></li>

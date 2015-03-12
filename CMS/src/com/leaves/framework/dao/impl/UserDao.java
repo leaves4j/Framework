@@ -29,10 +29,11 @@ public class UserDao extends AbstractHibernateDao<User> implements IUserDao {
     }
 
     @SuppressWarnings("unchecked")
-    public List<User> getUserInfo() {
+    public List<User> getUserList(int currentPage, int pageSize) {
         return this.getCurrentSession()
-                .createQuery("select code,name,email,description,state from User user")
+                .createQuery("select new User(id, code, name, email, description, createTime, state) from User")
+                .setFirstResult((currentPage-1) * pageSize)
+                .setMaxResults(pageSize)
                 .list();
-
     }
 }

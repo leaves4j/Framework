@@ -32,7 +32,7 @@ public abstract class AbstractHibernateDao<T extends Serializable> implements IO
     }
 
     @Override
-    public final T findOne(final long id) {
+    public final T findOne(final String id) {
         return (T) getCurrentSession().get(cls, id);
     }
 
@@ -45,7 +45,7 @@ public abstract class AbstractHibernateDao<T extends Serializable> implements IO
     public final List<T> findAllByPage(int currentPage, int pageSize) {
         return getCurrentSession()
                 .createQuery("from " + cls.getName())
-                .setFirstResult(currentPage * pageSize)
+                .setFirstResult((currentPage-1) * pageSize)
                 .setMaxResults(pageSize)
                 .list();
     }
@@ -53,7 +53,7 @@ public abstract class AbstractHibernateDao<T extends Serializable> implements IO
     @Override
     public final void create(final T entity) {
         Preconditions.checkNotNull(entity);
-        getCurrentSession().saveOrUpdate(entity);
+        getCurrentSession().save(entity);
     }
 
     @Override
@@ -64,13 +64,20 @@ public abstract class AbstractHibernateDao<T extends Serializable> implements IO
     }
 
     @Override
+    public final T createOrUpdate(final T entity) {
+        Preconditions.checkNotNull(entity);
+        getCurrentSession().saveOrUpdate(entity);
+        return entity;
+    }
+
+    @Override
     public final void delete(final T entity) {
         Preconditions.checkNotNull(entity);
         getCurrentSession().delete(entity);
     }
 
     @Override
-    public final void deleteById(final long entityId) {
+    public final void deleteById(final String entityId) {
         final T entity = findOne(entityId);
         Preconditions.checkState(entity != null);
         delete(entity);

@@ -15,7 +15,7 @@ public abstract class AbstractService<T extends Serializable> implements IOperat
     protected abstract IOperations<T> getDao();
 
     @Override
-    public T findOne(final long id) {
+    public T findOne(final String id) {
         return getDao().findOne(id);
     }
 
@@ -40,7 +40,7 @@ public abstract class AbstractService<T extends Serializable> implements IOperat
     }
 
     @Override
-    public void deleteById(long entityId) {
+    public void deleteById(String entityId) {
         getDao().deleteById(entityId);
     }
 

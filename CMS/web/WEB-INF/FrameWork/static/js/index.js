@@ -5,7 +5,7 @@ $(function () {
     function addTabs(title, url, id) {
         $('#main-tabs').tabs('add', {
             title: title,
-            content: '<iframe id="' + id + '" src="' + url + '"></iframe>',
+            content: '<iframe id="' + id + '" src="' + url + '" frameborder=no border=0></iframe>',
             closable: true
         });
         $('#' + id).bind('ready', function () {

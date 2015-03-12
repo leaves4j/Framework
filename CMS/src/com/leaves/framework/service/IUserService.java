@@ -13,7 +13,9 @@ import java.util.List;
 public interface IUserService extends IOperations<User> {
 
 
-    List<User> getUserInfo();
+    List<User> getUserList(int currentPage, int pageSize);
 
     List<User> findAllByPage(final int currentPage, final int pageSize);
+
+    String addUser(User user);
 }

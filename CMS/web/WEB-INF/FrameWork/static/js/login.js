@@ -15,11 +15,11 @@ $(function () {
         $.ajax({
             type: "POST",
             dataType:"json",
-            url: "/login",
+            url: "login",
             data: {code: code, password: password},
             success: function (data) {
                 if (data.state=="true") {
-                    window.location.href = "/index";
+                    window.location.href = "framework";
                 }
                 else {
                     $("#message").text(data.msg);

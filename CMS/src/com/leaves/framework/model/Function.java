@@ -18,11 +18,12 @@ public class Function implements Serializable {
     private String path;
     private String uri;
     private String icon;
-    private Set<Role> roles;
+    private String number;
+//    private Set<Role> roles;
 
     @Id
-    @GeneratedValue(generator="idGenerator")
-    @GenericGenerator(name="idGenerator", strategy="uuid")
+    @GeneratedValue(generator = "idGenerator")
+    @GenericGenerator(name = "idGenerator", strategy = "uuid")
     @Column(name = "ID")
     public String getId() {
         return id;
@@ -81,6 +82,24 @@ public class Function implements Serializable {
     public void setIcon(String icon) {
         this.icon = icon;
     }
+    @Basic
+    @Column(name = "Number")
+    public String getNumber() {
+        return number;
+    }
+
+    public void setNumber(String number) {
+        this.number = number;
+    }
+
+//    @ManyToMany(mappedBy = "functions", fetch = FetchType.LAZY)
+//    public Set<Role> getRoles() {
+//        return roles;
+//    }
+//
+//    public void setRoles(Set<Role> roles) {
+//        this.roles = roles;
+//    }
 
     @Override
     public boolean equals(Object o) {
@@ -94,7 +113,7 @@ public class Function implements Serializable {
         if (id != null ? !id.equals(function.id) : function.id != null) return false;
         if (name != null ? !name.equals(function.name) : function.name != null) return false;
         if (path != null ? !path.equals(function.path) : function.path != null) return false;
-        if (roles != null ? !roles.equals(function.roles) : function.roles != null) return false;
+//        if (roles != null ? !roles.equals(function.roles) : function.roles != null) return false;
         if (uri != null ? !uri.equals(function.uri) : function.uri != null) return false;
 
         return true;
@@ -108,18 +127,7 @@ public class Function implements Serializable {
         result = 31 * result + (path != null ? path.hashCode() : 0);
         result = 31 * result + (uri != null ? uri.hashCode() : 0);
         result = 31 * result + (icon != null ? icon.hashCode() : 0);
-        result = 31 * result + (roles != null ? roles.hashCode() : 0);
+//        result = 31 * result + (roles != null ? roles.hashCode() : 0);
         return result;
     }
-
-    @ManyToMany(mappedBy = "functions",fetch = FetchType.LAZY)
-
-    public Set<Role> getRoles() {
-        return roles;
-    }
-
-    public void setRoles(Set<Role> roles) {
-        this.roles = roles;
-    }
-
 }

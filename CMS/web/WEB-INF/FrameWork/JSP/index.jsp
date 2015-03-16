@@ -30,7 +30,7 @@
     </div>
     <%--<div id="footer" data-options="region:'south'"></div>--%>
     <div id="function" style="width: 200px" data-options="region:'west',headerCls:'menu-header',title:'菜单'">
-        <jsp:include page="/function"></jsp:include>
+        <jsp:include page="/framework/menu"></jsp:include>
     </div>
     <div id="main" data-options="region:'center'">
         <div id="main-tabs" class="easyui-tabs" style="width:100%;height:100%" data-options="fit:true,border:false">
@@ -49,12 +49,6 @@
                     <li>easyui save your time and scales while developing your products.</li>
                     <li>easyui is very easy but powerful.</li>
                 </ul>
-            </div>
-            <div title="人员管理" data-options="closable:true" style="padding:10px">
-
-            </div>
-            <div title="Help" data-options="closable:true">
-                <iframe src=""></iframe>
             </div>
         </div>
     </div>

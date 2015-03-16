@@ -27,7 +27,7 @@ public class UserDao extends AbstractHibernateDao<User> implements IUserDao {
                 .list();
 
     }
-
+    @Override
     @SuppressWarnings("unchecked")
     public List<User> getUserList(int currentPage, int pageSize) {
         return this.getCurrentSession()
@@ -35,5 +35,10 @@ public class UserDao extends AbstractHibernateDao<User> implements IUserDao {
                 .setFirstResult((currentPage-1) * pageSize)
                 .setMaxResults(pageSize)
                 .list();
+    }
+
+    @Override
+    public boolean isExisted(User user) {
+        return false;
     }
 }

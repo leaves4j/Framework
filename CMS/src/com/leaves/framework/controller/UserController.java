@@ -26,28 +26,27 @@ public class UserController {
     @Resource(name = "userService")
     private IUserService userService;
 
-    @RequestMapping(value = "/users", method = RequestMethod.GET)
+    @RequestMapping(value = "framework/users", method = RequestMethod.GET)
     public ModelAndView getUserPage(Model model) {
-
         ModelAndView mv = new ModelAndView();
-        mv.setViewName("FrameWork/user");
+        mv.setViewName("FrameWork/JSP/user");
         return mv;
     }
 
-    @RequestMapping(value = "/user", method = RequestMethod.GET)
+    @RequestMapping(value = "framework/user", method = RequestMethod.GET)
     @ResponseBody
     public List<User> getUserList(@RequestParam int page, @RequestParam int rows) {
         return userService.getUserList(page, rows);
     }
 
-    @RequestMapping(value = "/user", method = RequestMethod.POST)
+    @RequestMapping(value = "framework/user", method = RequestMethod.POST)
     @ResponseBody
     public String addUser(@RequestBody User user) {
         user.setState("0");
         return userService.addUser(user);
     }
 
-    @RequestMapping(value = "/user/{id}", method = RequestMethod.POST)
+    @RequestMapping(value = "framework/user/{id}", method = RequestMethod.POST)
     @ResponseBody
     public String editUser(@RequestBody User user, @PathVariable String id) {
         user.setId(id);

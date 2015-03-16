@@ -10,7 +10,10 @@ import javax.annotation.Resource;
 import java.util.List;
 
 /**
- * Created by jiangq on 2015/1/5.
+ * User: jiangq
+ * Date: 2015/1/5
+ * Time: 15:37
+ * Description:
  */
 @Service("loginService")
 @Transactional

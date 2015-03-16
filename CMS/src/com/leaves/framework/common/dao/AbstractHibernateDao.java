@@ -7,13 +7,13 @@ package com.leaves.framework.common.dao;
 
 import java.io.Serializable;
 import java.util.List;
-
 import javax.annotation.Resource;
 
+import com.leaves.framework.common.IOperations;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
-
 import com.google.common.base.Preconditions;
+
 
 @SuppressWarnings("unchecked")
 public abstract class AbstractHibernateDao<T extends Serializable> implements IOperations<T> {
@@ -23,38 +23,53 @@ public abstract class AbstractHibernateDao<T extends Serializable> implements IO
     @Resource(name = "sessionFactory")
     private SessionFactory sessionFactory;
 
+    /**
+     * 设置class
+     *
+     * @param classToSet class
+     */
     protected final void setClass(final Class<T> classToSet) {
         this.cls = Preconditions.checkNotNull(classToSet);
     }
 
+    /**
+     * 获取当前session
+     *
+     * @return session
+     */
     protected final Session getCurrentSession() {
         return sessionFactory.getCurrentSession();
     }
+
 
     @Override
     public final T findOne(final String id) {
         return (T) getCurrentSession().get(cls, id);
     }
 
+
     @Override
     public final List<T> findAll() {
         return getCurrentSession().createQuery("from " + cls.getName()).list();
     }
 
+
     @Override
     public final List<T> findAllByPage(int currentPage, int pageSize) {
         return getCurrentSession()
                 .createQuery("from " + cls.getName())
-                .setFirstResult((currentPage-1) * pageSize)
+                .setFirstResult((currentPage - 1) * pageSize)
                 .setMaxResults(pageSize)
                 .list();
     }
+
 
     @Override
     public final void create(final T entity) {
         Preconditions.checkNotNull(entity);
         getCurrentSession().save(entity);
     }
+
 
     @Override
     public final T update(final T entity) {
@@ -63,6 +78,7 @@ public abstract class AbstractHibernateDao<T extends Serializable> implements IO
         return entity;
     }
 
+
     @Override
     public final T createOrUpdate(final T entity) {
         Preconditions.checkNotNull(entity);
@@ -70,11 +86,13 @@ public abstract class AbstractHibernateDao<T extends Serializable> implements IO
         return entity;
     }
 
+
     @Override
     public final void delete(final T entity) {
         Preconditions.checkNotNull(entity);
         getCurrentSession().delete(entity);
     }
+
 
     @Override
     public final void deleteById(final String entityId) {

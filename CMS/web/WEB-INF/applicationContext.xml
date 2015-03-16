@@ -48,11 +48,11 @@
             </props>
 
         </property>
-        <property name="annotatedClasses">
+        <property name="packagesToScan">
             <list>
-                <value>com.leaves.framework.model.User</value>
-                <value>com.leaves.framework.model.Role</value>
-                <value>com.leaves.framework.model.Function</value>
+                <value>com.leaves.framework.model</value>
+                <!--<value>com.leaves.framework.model.Role</value>-->
+                <!--<value>com.leaves.framework.model.Function</value>-->
             </list>
         </property>
 

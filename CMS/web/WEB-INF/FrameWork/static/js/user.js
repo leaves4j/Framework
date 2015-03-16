@@ -18,42 +18,53 @@ function newUser() {
 function editUser() {
     var row = $('#userlist').datagrid('getSelected');
     if (row) {
+        row.state=formatState(row.state);
+        row.createTime=formatDate(row.createTime);
         $('#edit-dlg').dialog('open').dialog('setTitle', '修改');
         $('#user').form('load', row);
         id = row.id;
     }
+    else {
+        fw.popup("请选中需要修改的行");
+    }
 }
 //新增
 function addUser() {
-    fw.formPost("/user", "adduser",
-        function (data) {
-            if (data == "ok") {
-                $('#userlist').datagrid('reload')
-                fw.popup("保存成功");
-                $('#add-dlg').dialog('close');
-                $('#edit-dlg').dialog('close');
+    var data=$("#adduser").serializeObject();
+    if ($("#adduser").form('validate'))
+        fw.formPost("framework/user", data,
+            function (data) {
+                if (data == "ok") {
+                    $('#userlist').datagrid('reload')
+                    fw.popup("保存成功");
+                    $('#add-dlg').dialog('close');
+                    $('#edit-dlg').dialog('close');
+                }
+                else if (data == "existed") {
+                    fw.popup("用户编号或邮箱已经再存")
+                }
             }
-            else if (data == "existed") {
-                fw.popup("用户编号或邮箱已经再存")
-            }
-        }
-    );
+        );
 }
 //更新
 function updateUser() {
-    fw.formPost("/user/"+id, "user",
-        function (data) {
-            if (data == "ok") {
-                $('#userlist').datagrid('reload')
-                fw.popup("保存成功");
-                $('#add-dlg').dialog('close');
-                $('#edit-dlg').dialog('close');
+    var data=$("#user").serializeObject();
+    delete data.state;
+    delete data.createTime;
+    if ($("#user").form('validate'))
+        fw.formPost("framework/user" + id, data,
+            function (data) {
+                if (data == "ok") {
+                    $('#userlist').datagrid('reload')
+                    fw.popup("保存成功");
+                    $('#add-dlg').dialog('close');
+                    $('#edit-dlg').dialog('close');
+                }
+                else if (data == "existed") {
+                    fw.popup("用户编号或邮箱已经再存")
+                }
             }
-            else if (data == "existed") {
-                fw.popup("用户编号或邮箱已经再存")
-            }
-        }
-    );
+        );
 }
 //删除
 function destroyUser() {
@@ -61,13 +72,17 @@ function destroyUser() {
     if (row) {
         $.messager.confirm('确定', '确定要删除当前用户吗?', function (r) {
             if (r) {
-                fw.remove('/user/' + row.id, function (data) {
+                fw.remove('framework/user' + row.id, function (data) {
                     if (data == "ok") {
-                        fw.popup("保存成功");
+                        $('#userlist').datagrid('reload')
+                        fw.popup("删除成功");
                     }
                 }, "text")
             }
         });
+    }
+    else {
+        fw.popup("请选中需要删除的行");
     }
 }
 function formatDate(val, row) {
@@ -75,7 +90,7 @@ function formatDate(val, row) {
     return d.getFullYear() + "-" + (d.getMonth() + 1) + "-" + d.getDate() + " " + d.getHours() + ":" + d.getMinutes() + ":" + d.getSeconds();
 
 }
-function formateStatus(val, row) {
+function formatState(val, row) {
     switch (val) {
         case "0":
             return "正常";

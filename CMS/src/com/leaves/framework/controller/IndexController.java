@@ -21,11 +21,11 @@ public class IndexController {
     private IUserService userService;
 
 
-    @RequestMapping(value = "/index", method = RequestMethod.GET)
+    @RequestMapping(value = "index", method = RequestMethod.GET)
     public ModelAndView getIndexPage(Model model) {
 
         ModelAndView mv = new ModelAndView();
-        mv.setViewName("FrameWork/index");
+        mv.setViewName("FrameWork/JSP/index");
         return mv;
     }
 

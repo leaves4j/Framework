@@ -1,6 +1,6 @@
 package com.leaves.framework.common.service;
 
-import com.leaves.framework.common.dao.IOperations;
+import com.leaves.framework.common.IOperations;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.io.Serializable;

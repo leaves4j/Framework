@@ -9,31 +9,39 @@
     <schema name="" catalog="FleaMarket"/>
     <schema name="" catalog="information_schema"/>
     <table name="sys_function" schema="" catalog="FleaMarket" type="TABLE">
-      <column name="ID" sqlType="BIGINT" precision="19" scale="0" nullable="false" jdbcType="-5"/>
+      <column name="ID" sqlType="VARCHAR" precision="32" scale="0" nullable="false" jdbcType="12"/>
       <column name="Code" sqlType="VARCHAR" precision="50" scale="0" nullable="false" jdbcType="12"/>
-      <column name="Name" sqlType="VARCHAR" precision="100" scale="0" nullable="true" jdbcType="12"/>
-      <column name="Path" sqlType="BIGINT" precision="19" scale="0" nullable="false" jdbcType="-5"/>
+      <column name="Name" sqlType="VARCHAR" precision="100" scale="0" nullable="false" jdbcType="12"/>
+      <column name="Path" sqlType="VARCHAR" precision="32" scale="0" nullable="true" jdbcType="12"/>
       <column name="URI" sqlType="VARCHAR" precision="100" scale="0" nullable="true" jdbcType="12"/>
       <column name="Icon" sqlType="VARCHAR" precision="200" scale="0" nullable="true" jdbcType="12"/>
+      <column name="Number" sqlType="VARCHAR" precision="8" scale="0" nullable="true" jdbcType="12"/>
       <primary-key name="PRIMARY" columns="ID"/>
+      <exported-key name="FK_d9x5p0la8c61qe41g5iji0vqc" table="sys_role_function" schema="" catalog="FleaMarket" columns="FunctionID"/>
       <index name="Code" unique="true" columns="Code"/>
     </table>
     <table name="sys_role" schema="" catalog="FleaMarket" type="TABLE">
-      <column name="ID" sqlType="BIGINT" precision="19" scale="0" nullable="false" jdbcType="-5"/>
+      <column name="ID" sqlType="VARCHAR" precision="32" scale="0" nullable="false" jdbcType="12"/>
       <column name="Code" sqlType="VARCHAR" precision="50" scale="0" nullable="false" jdbcType="12"/>
       <column name="Name" sqlType="VARCHAR" precision="50" scale="0" nullable="true" jdbcType="12"/>
       <column name="Description" sqlType="VARCHAR" precision="500" scale="0" nullable="true" jdbcType="12"/>
       <primary-key name="PRIMARY" columns="ID"/>
+      <exported-key name="FK_lpsgki58ohrc98ra92avps5wa" table="sys_role_function" schema="" catalog="FleaMarket" columns="RoleID"/>
+      <exported-key name="FK_8uk74b467ws5k8xi7ivekvx5e" table="sys_user_role" schema="" catalog="FleaMarket" columns="RoleID"/>
       <index name="Code" unique="true" columns="Code"/>
     </table>
     <table name="sys_role_function" schema="" catalog="FleaMarket" type="TABLE">
-      <column name="RoleID" sqlType="BIGINT" precision="19" scale="0" nullable="false" jdbcType="-5"/>
-      <column name="FunctionID" sqlType="BIGINT" precision="19" scale="0" nullable="false" jdbcType="-5"/>
+      <column name="RoleID" sqlType="VARCHAR" precision="32" scale="0" nullable="false" jdbcType="12"/>
+      <column name="FunctionID" sqlType="VARCHAR" precision="32" scale="0" nullable="false" jdbcType="12"/>
+      <foreign-key name="FK_d9x5p0la8c61qe41g5iji0vqc" columns="FunctionID" ref-table="sys_function" ref-schema="" ref-catalog="FleaMarket" ref-columns="ID" update-rule="3" delete-rule="0" deferrability="2"/>
+      <foreign-key name="FK_lpsgki58ohrc98ra92avps5wa" columns="RoleID" ref-table="sys_role" ref-schema="" ref-catalog="FleaMarket" ref-columns="ID" update-rule="3" delete-rule="3" deferrability="2"/>
+      <index name="FK_d9x5p0la8c61qe41g5iji0vqc" unique="false" columns="FunctionID"/>
+      <index name="FK_lpsgki58ohrc98ra92avps5wa" unique="false" columns="RoleID"/>
       <index name="index_role" unique="false" columns="FunctionID"/>
       <index name="index_user" unique="false" columns="RoleID"/>
     </table>
     <table name="sys_user" schema="" catalog="FleaMarket" type="TABLE">
-      <column name="ID" sqlType="BIGINT" precision="19" scale="0" nullable="false" jdbcType="-5"/>
+      <column name="ID" sqlType="VARCHAR" precision="32" scale="0" nullable="false" jdbcType="12"/>
       <column name="Code" sqlType="VARCHAR" precision="30" scale="0" nullable="false" jdbcType="12"/>
       <column name="Name" sqlType="VARCHAR" precision="30" scale="0" nullable="false" jdbcType="12"/>
       <column name="Password" sqlType="VARCHAR" precision="40" scale="0" nullable="false" jdbcType="12"/>
@@ -44,11 +52,16 @@
       <column name="OrganizationID" sqlType="BIGINT" precision="19" scale="0" nullable="true" jdbcType="-5"/>
       <column name="state" sqlType="CHAR" precision="1" scale="0" nullable="true" jdbcType="1"/>
       <primary-key name="PRIMARY" columns="ID"/>
+      <exported-key name="FK_pvdaavr91tnlrmeg3t7o12gin" table="sys_user_role" schema="" catalog="FleaMarket" columns="UserID"/>
       <index name="Code" unique="true" columns="Code"/>
     </table>
     <table name="sys_user_role" schema="" catalog="FleaMarket" type="TABLE">
-      <column name="UserID" sqlType="BIGINT" precision="19" scale="0" nullable="false" jdbcType="-5"/>
-      <column name="RoleID" sqlType="BIGINT" precision="19" scale="0" nullable="false" jdbcType="-5"/>
+      <column name="UserID" sqlType="VARCHAR" precision="32" scale="0" nullable="false" jdbcType="12"/>
+      <column name="RoleID" sqlType="VARCHAR" precision="32" scale="0" nullable="false" jdbcType="12"/>
+      <foreign-key name="FK_8uk74b467ws5k8xi7ivekvx5e" columns="RoleID" ref-table="sys_role" ref-schema="" ref-catalog="FleaMarket" ref-columns="ID" update-rule="3" delete-rule="3" deferrability="2"/>
+      <foreign-key name="FK_pvdaavr91tnlrmeg3t7o12gin" columns="UserID" ref-table="sys_user" ref-schema="" ref-catalog="FleaMarket" ref-columns="ID" update-rule="3" delete-rule="3" deferrability="2"/>
+      <index name="FK_8uk74b467ws5k8xi7ivekvx5e" unique="false" columns="RoleID"/>
+      <index name="FK_pvdaavr91tnlrmeg3t7o12gin" unique="false" columns="UserID"/>
       <index name="index_role" unique="false" columns="RoleID"/>
       <index name="index_user" unique="false" columns="UserID"/>
     </table>

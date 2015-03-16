@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
-  <component name="DataSourceManagerImpl" format="xml" hash="3638569973">
+  <component name="DataSourceManagerImpl" format="xml" hash="3530230262">
     <data-source source="LOCAL" name="MySQL - FleaMarket@ubuntu" uuid="aaa6dee0-69d1-48b1-8ad5-51e42a00d534">
       <driver-ref>mysql</driver-ref>
       <synchronize>true</synchronize>

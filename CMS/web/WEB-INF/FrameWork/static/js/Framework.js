@@ -48,14 +48,14 @@ var fw = {
             success: success
         })
     },
-    formPost: function (url,formId,success,type) {
+    formPost: function (url, data, success, type) {
         $.ajax({
             type: "POST",
             dataType: type == undefined || type == '' ? 'text' : type,
             url: url,
             processData: false,
             contentType: "application/json;charset=utf-8",
-            data: JSON.stringify($('#' + formId).serializeObject()),
+            data: JSON.stringify(data),
             success: success
         })
     },
@@ -77,5 +77,25 @@ var fw = {
             timeout: 5000,
             showType: 'slide'
         })
+    },
+    toEasyTreeJson: function (data, id, pid) {
+        var easyData = [];
+        for (var object in data) {
+            if (data[object][pid] == "" || data[object][pid] == null) {
+                easyData.push(data[object])
+                delete data[object];
+            }
+        }
+        for (var pObject in easyData) {
+            easyData[pObject]["children"] = [];
+            for (var object in data) {
+                if (data[object][pid] == easyData[pObject][id]) {
+                    easyData[pObject]["children"].push(data[object]);
+                    delete data[object];
+                }
+            }
+        }
+        return easyData;
     }
+
 }

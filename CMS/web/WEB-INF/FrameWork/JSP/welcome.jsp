@@ -9,10 +9,10 @@
 <head>
     <title></title>
     <!--[if !IE]> -->
-    <script src="lib/jquery/jquery-2.1.3.min.js"></script>
+    <script src="../lib/jquery/jquery-2.1.3.min.js"></script>
     <!-- <![endif]-->
     <!--[if IE]>
-    <script src="lib/jquery/jquery-1.11.2.min.js"></script>
+    <script src="../lib/jquery/jquery-1.11.2.min.js"></script>
     <![endif]-->
 </head>
 <script type="text/javascript">

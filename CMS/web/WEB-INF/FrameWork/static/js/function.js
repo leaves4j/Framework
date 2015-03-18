@@ -5,7 +5,7 @@
  * Description:
  */
 $(function () {
-    //loadData();
+    $("#functionList").autoHeight(80);
 });
 //加载数据
 function loadData(param, success, error) {
@@ -35,7 +35,7 @@ function addChildren() {
 }
 //修改按钮
 function edit() {
-    var row = $('#functionList').datagrid('getSelected');
+    var row = $('#functionList').treegrid('getSelected');
     if (row) {
         if (!row.path)
             $('#URI').hide();
@@ -48,7 +48,7 @@ function edit() {
 }
 //删除按钮
 function destroy() {
-    var row = $('#functionList').datagrid('getSelected');
+    var row = $('#functionList').treegrid('getSelected');
 
     if (row) {
         var message = row.path == "" ? "您选定的功能节点包含子节点，确定删除该节点及其子节点吗？" : "确定要删除该节点吗？";
@@ -56,7 +56,7 @@ function destroy() {
             if (r) {
                 fw.remove('/framework/function/' + row.id, function (data) {
                     if (data == "ok") {
-                        $('#functionlist').datagrid('reload');
+                        $('#functionList').treegrid('reload');
                         fw.popup("删除成功");
                     }
                 }, "text");
@@ -77,7 +77,7 @@ function addOrUpdateFunction() {
         fw.formPost("/framework/function", data,
             function (data) {
                 if (data == "ok") {
-                    $('#userlist').datagrid('reload');
+                    $('#functionList').treegrid('reload');
                     fw.popup("保存成功");
                     $('#dlg').dialog('close');
                 }

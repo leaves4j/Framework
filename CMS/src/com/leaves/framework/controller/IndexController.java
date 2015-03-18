@@ -20,7 +20,6 @@ public class IndexController {
     @Resource(name = "userService")
     private IUserService userService;
 
-
     @RequestMapping(value = "index", method = RequestMethod.GET)
     public ModelAndView getIndexPage(Model model) {
 
@@ -28,6 +27,4 @@ public class IndexController {
         mv.setViewName("FrameWork/JSP/index");
         return mv;
     }
-
-
 }

@@ -22,6 +22,8 @@ public class FunctionDao extends AbstractHibernateDao<Function> implements IFunc
     public void deleteChildren(String id) {
         this.getCurrentSession()
                 .createQuery("delete from Function where path=?")
-                .setString(0, id);
+                .setString(0, id)
+                .executeUpdate();
+
     }
 }

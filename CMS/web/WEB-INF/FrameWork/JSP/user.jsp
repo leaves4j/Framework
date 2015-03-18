@@ -31,7 +31,7 @@
 <div>
     <div style="padding-bottom: 5px;">用户列表</div>
     <table id="userlist" class="easyui-datagrid" style="width:100%;"
-           url="/user" method="GET"
+           url="framework/user" method="GET"
            pagination="true"
            rownumbers="true" fitColumns="true" singleSelect="true">
         <thead>

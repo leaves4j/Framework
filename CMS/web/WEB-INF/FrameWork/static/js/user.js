@@ -6,59 +6,63 @@
  */
 $(function () {
     $("#userlist").autoHeight(80);
+    //$('#roles').combobox({
+    //    icons: [{iconCls: 'fa fa-spinner fa-pulse'}]
+    //});
 })
 var id;
-//
+//新增
 function newUser() {
-    $('#add-dlg').dialog('open').dialog('setTitle', '新增');
-    $('#adduser').form('clear');
+    $('#dlg').dialog('open').dialog('setTitle', '新增');
+    $('#user').form('clear');
+    $("[mame='code']").removeAttr("readonly");
+    $("[hide-flag]").hide();
+    $('#role').combotree('setValue', '');
 
 }
-//
+//修改
 function editUser() {
     var row = $('#userlist').datagrid('getSelected');
     if (row) {
-        row.state=formatState(row.state);
-        row.createTime=formatDate(row.createTime);
-        $('#edit-dlg').dialog('open').dialog('setTitle', '修改');
+        row.createTime = formatDate(row.createTime);
+        row.password="******";
+        $('#dlg').dialog('open').dialog('setTitle', '修改');
         $('#user').form('load', row);
+        $("[mame='code']").attr("readonly", "readonly");
+        $.get("user/" + row.id, function (data) {
+            var checked = [];
+            for (var i in data.roles) {
+                checked.push(data.roles[i].id);
+            }
+            $('#roles').combobox('setValues', checked);
+        }, "json");
         id = row.id;
     }
     else {
         fw.popup("请选中需要修改的行");
     }
 }
-//新增
-function addUser() {
-    var data=$("#adduser").serializeObject();
-    if ($("#adduser").form('validate'))
-        fw.formPost("framework/user", data,
-            function (data) {
-                if (data == "ok") {
-                    $('#userlist').datagrid('reload')
-                    fw.popup("保存成功");
-                    $('#add-dlg').dialog('close');
-                    $('#edit-dlg').dialog('close');
-                }
-                else if (data == "existed") {
-                    fw.popup("用户编号或邮箱已经再存")
-                }
-            }
-        );
-}
-//更新
-function updateUser() {
-    var data=$("#user").serializeObject();
-    delete data.state;
+//保存
+function saveUser() {
+    var data = $("#user").serializeObject();
+
     delete data.createTime;
+    if (data.id == "") delete data.id;
+    if (data.state == "") data.state = 0;
+    if (data.password == "******") delete data.password;
+    var selected = $('#roles').combobox("getValues");
+    data.roles = [];
+    for (var i in selected) {
+        data.roles.push({id: selected[i]});
+    }
+
     if ($("#user").form('validate'))
-        fw.formPost("framework/user" + id, data,
+        fw.formPost("user", data,
             function (data) {
                 if (data == "ok") {
                     $('#userlist').datagrid('reload')
                     fw.popup("保存成功");
-                    $('#add-dlg').dialog('close');
-                    $('#edit-dlg').dialog('close');
+                    $('#dlg').dialog('close');
                 }
                 else if (data == "existed") {
                     fw.popup("用户编号或邮箱已经再存")
@@ -72,7 +76,7 @@ function destroyUser() {
     if (row) {
         $.messager.confirm('确定', '确定要删除当前用户吗?', function (r) {
             if (r) {
-                fw.remove('framework/user' + row.id, function (data) {
+                fw.remove('user/' + row.id, function (data) {
                     if (data == "ok") {
                         $('#userlist').datagrid('reload')
                         fw.popup("删除成功");

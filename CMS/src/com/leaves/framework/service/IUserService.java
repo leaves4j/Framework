@@ -11,6 +11,8 @@ import java.util.List;
  */
 public interface IUserService {
 
+    User getUser(String id);
+
     /**
      * 分页获取用户列表
      *
@@ -42,4 +44,5 @@ public interface IUserService {
      * @return existed/ok
      */
     String update(User user);
+    String addOrUpdate(User user);
 }

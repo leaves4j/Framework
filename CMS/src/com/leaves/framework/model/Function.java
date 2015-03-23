@@ -1,5 +1,7 @@
 package com.leaves.framework.model;
 
+import org.hibernate.annotations.DynamicInsert;
+import org.hibernate.annotations.DynamicUpdate;
 import org.hibernate.annotations.GenericGenerator;
 
 import javax.persistence.*;
@@ -10,6 +12,8 @@ import java.util.Set;
  * Created by jiangq on 2014/12/31.
  */
 @Entity
+@DynamicInsert
+@DynamicUpdate
 @Table(name = "sys_function", schema = "", catalog = "FleaMarket")
 public class Function implements Serializable {
     private String id;

@@ -1,4 +1,5 @@
-<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
+<%@ page import="com.leaves.framework.model.Role" %>
+<%@ page import="java.util.List" %>
 <%--
   User: jiangq
   Date: 2015/2/12
@@ -31,7 +32,7 @@
 <div>
     <div style="padding-bottom: 5px;">用户列表</div>
     <table id="userlist" class="easyui-datagrid" style="width:100%;"
-           url="framework/user" method="GET"
+           url="user" method="GET"
            pagination="true"
            rownumbers="true" fitColumns="true" singleSelect="true">
         <thead>
@@ -45,11 +46,12 @@
         </thead>
     </table>
 </div>
-<%--新增页面--%>
-<div id="add-dlg" class="easyui-dialog" style="width:400px;height:280px;padding:10px 20px"
-     closed="true" buttons="#add-buttons">
+
+<%--详情--%>
+<div id="dlg" class="easyui-dialog" style="width:400px;height:400px;padding:10px 20px"
+     closed="true" buttons="#dlg-buttons">
     <div class="fw-form-title">用户信息</div>
-    <form id="adduser" method="post" novalidate="true" class="fw-form">
+    <form id="user" method="post" class="fw-form" novalidate="true">
         <div>
             <label>用户编号：</label>
             <input name="code" class="easyui-textbox" required="true" validType="length[1,30]">
@@ -63,49 +65,42 @@
             <input name="password" class="easyui-textbox" required="true" validType="length[1,40]">
         </div>
         <div>
-            <label>邮箱：</label>
-            <input name="email" class="easyui-textbox" validType="['email','length[1,64]']">
-        </div>
-    </form>
-</div>
-<div id="add-buttons">
-    <a href="javascript:void(0)" class="easyui-linkbutton " iconCls="fa fa-check" onclick="addUser()"
-       style="width:90px">保存</a>
-    <a href="javascript:void(0)" class="easyui-linkbutton" iconCls="fa fa-times"
-       onclick="javascript:$('#add-dlg').dialog('close')" style="width:90px">取消</a>
-</div>
-<%--修改--%>
-<div id="edit-dlg" class="easyui-dialog" style="width:400px;height:300px;padding:10px 20px"
-     closed="true" buttons="#edit-buttons">
-    <div class="fw-form-title">用户信息</div>
-    <form id="user" method="post" class="fw-form" novalidate="true">
-        <div>
-            <label>用户编号：</label>
-            <input name="code" class="easyui-textbox" required="true" readonly="true">
-        </div>
-        <div>
-            <label>用户名：</label>
-            <input name="name" class="easyui-textbox" required="true" validType="length[1,30]">
-        </div>
-        <div>
             <label>邮箱:</label>
             <input name="email" class="easyui-textbox" validType="email">
         </div>
-        <div>
+        <div hide-flag>
             <label>创建时间</label>
             <input name="createTime" class="easyui-textbox" readonly="true">
         </div>
-        <div>
+        <div hide-flag>
             <label>状态</label>
-            <input name="state" class="easyui-textbox" readonly="true">
+            <select class="easyui-combobox" name="state" style="width: 175px">
+                <option value="0">启用</option>
+                <option value="1">禁用</option>
+            </select>
+        </div>
+        <div id="roleDiv">
+            <label>角色：</label>
+            <select id="roles" class="easyui-combobox" panelHeight="auto" multiple="true"  style="width: 175px">
+                <%
+                    @SuppressWarnings("unchecked")
+                    List<Role> roles = (List<Role>) request.getAttribute("roles");
+                    for (Role role : roles) {
+                        out.println("<option value=\"" + role.getId() + "\">" + role.getName() + "</option>");
+                    }
+                %>
+            </select>
+        </div>
+        <div style="display: none">
+            <input name="id">
         </div>
     </form>
 </div>
-<div id="edit-buttons">
-    <a href="javascript:void(0)" class="easyui-linkbutton c6" iconCls="fa fa-check" onclick="updateUser()"
+<div id="dlg-buttons">
+    <a class="easyui-linkbutton c6" iconCls="fa fa-check" onclick="saveUser()"
        style="width:90px">保存</a>
-    <a href="javascript:void(0)" class="easyui-linkbutton" iconCls="fa fa-times"
-       onclick="javascript:$('#edit-dlg').dialog('close')" style="width:90px">取消</a>
+    <a class="easyui-linkbutton" iconCls="fa fa-times"
+       onclick="javascript:$('#dlg').dialog('close')" style="width:90px">取消</a>
 </div>
 </body>
 <link href="../lib/font-awesome-4.3.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">

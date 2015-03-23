@@ -12,7 +12,7 @@ html {
     position: fixed;
     margin-top: 3px;
     top: 0;
-    z-index: 9999;
+    z-index: 2;
 }
 
 .fw-toolbar .panel-body {
@@ -57,7 +57,7 @@ html {
     line-height: 22px;
 }
 
-.fw-form > div span {
-    height: 26px;
-    width: 75%;
-}
+/*.fw-form > div span {*/
+    /*height: 26px;*/
+    /*width: 75%;*/
+/*}*/

@@ -9,7 +9,7 @@ $(function () {
 });
 //加载数据
 function loadData(param, success, error) {
-    $.get("/framework/function", function (data) {
+    $.get("function", function (data) {
         success(fw.toEasyTreeJson(data, "id", "path"));
     }, "json")
 
@@ -37,7 +37,7 @@ function addChildren() {
 function edit() {
     var row = $('#functionList').treegrid('getSelected');
     if (row) {
-        if (!row.path)
+        if (row.path==null)
             $('#URI').hide();
         $('#dlg').dialog('open').dialog('setTitle', '修改');
         $('#function').form('load', row);
@@ -54,7 +54,7 @@ function destroy() {
         var message = row.path == "" ? "您选定的功能节点包含子节点，确定删除该节点及其子节点吗？" : "确定要删除该节点吗？";
         $.messager.confirm('确定', message, function (r) {
             if (r) {
-                fw.remove('/framework/function/' + row.id, function (data) {
+                fw.remove('function/' + row.id, function (data) {
                     if (data == "ok") {
                         $('#functionList').treegrid('reload');
                         fw.popup("删除成功");
@@ -74,7 +74,7 @@ function addOrUpdateFunction() {
     if (data.id == "") delete data.id;
     if (data.path == "") delete data.path;
     if (frmFunction.form('validate'))
-        fw.formPost("/framework/function", data,
+        fw.formPost("function", data,
             function (data) {
                 if (data == "ok") {
                     $('#functionList').treegrid('reload');

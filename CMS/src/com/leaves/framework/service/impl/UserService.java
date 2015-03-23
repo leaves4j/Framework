@@ -1,15 +1,19 @@
 package com.leaves.framework.service.impl;
 
 import com.leaves.framework.dao.IUserDao;
+import com.leaves.framework.model.Role;
 import com.leaves.framework.model.User;
 import com.leaves.framework.service.IUserService;
 
+import org.hibernate.Hibernate;
 import org.springframework.beans.BeanUtils;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import javax.annotation.Resource;
 import java.util.List;
+import java.util.Map;
+import java.util.Set;
 
 /**
  * User: jiangq
@@ -25,8 +29,16 @@ public class UserService implements IUserService {
     private IUserDao userDao;
 
     @Override
+    public User getUser(String id) {
+        User user = userDao.findOne(id);
+        Hibernate.initialize(user.getRoles());
+        return user;
+    }
+
+    @Override
     public List<User> getUserList(int currentPage, int pageSize) {
-        return userDao.getUserList(currentPage, pageSize);
+        List<User> users = userDao.findAllByPage(currentPage, pageSize);
+        return users;
     }
 
     @Override
@@ -43,10 +55,13 @@ public class UserService implements IUserService {
     public String update(User user) {
         if (userDao.isExisted(user)) {
             return "existed";
-        } else {
+        } else if (user.getPassword() == null) {
             User oUser = userDao.findOne(user.getId());
-            BeanUtils.copyProperties(user, oUser, "id", "password", "departmentId", "organizationId", "state", "roles");
+            BeanUtils.copyProperties(user, oUser, "password");
             userDao.update(oUser);
+            return "ok";
+        } else {
+            userDao.update(user);
             return "ok";
         }
     }
@@ -54,5 +69,12 @@ public class UserService implements IUserService {
     @Override
     public void deleteById(String id) {
         userDao.deleteById(id);
+    }
+
+    @Override
+    public String addOrUpdate(User user) {
+        if (user.getId() == null)
+            return this.addUser(user);
+        else return this.update(user);
     }
 }

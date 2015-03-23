@@ -10,4 +10,7 @@ import com.leaves.framework.model.Role;
  * Description:
  */
 public interface IRoleDao extends IOperations<Role> {
+
+
+    boolean isExisted(Role role);
 }

@@ -27,15 +27,15 @@ public class UserDao extends AbstractHibernateDao<User> implements IUserDao {
                 .list();
 
     }
-    @Override
-    @SuppressWarnings("unchecked")
-    public List<User> getUserList(int currentPage, int pageSize) {
-        return this.getCurrentSession()
-                .createQuery("select new User(id, code, name, email, description, createTime, state) from User")
-                .setFirstResult((currentPage-1) * pageSize)
-                .setMaxResults(pageSize)
-                .list();
-    }
+//    @Override
+//    @SuppressWarnings("unchecked")
+//    public List<User> getUserList(int currentPage, int pageSize) {
+//        return this.getCurrentSession()
+//                .createQuery("select new User(id, code, name, email, description, createTime, state) from User")
+//                .setFirstResult((currentPage-1) * pageSize)
+//                .setMaxResults(pageSize)
+//                .list();
+//    }
 
     @Override
     public boolean isExisted(User user) {

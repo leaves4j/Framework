@@ -14,9 +14,18 @@ import org.springframework.stereotype.Repository;
  */
 @Repository("roleDao")
 public class RoleDao extends AbstractHibernateDao<Role> implements IRoleDao {
-    public RoleDao(){
+    public RoleDao() {
         super();
         setClass(Role.class);
     }
 
+    @Override
+    public boolean isExisted(Role role) {
+        return this.getCurrentSession()
+                .createQuery("from Role role where role.code= ?")
+                .setString(0, role.getCode())
+                .list()
+                .size() > 0;
+
+    }
 }

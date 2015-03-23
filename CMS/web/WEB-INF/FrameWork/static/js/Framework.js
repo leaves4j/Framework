@@ -80,22 +80,49 @@ var fw = {
     },
     toEasyTreeJson: function (data, id, pid) {
         var easyData = [];
-        for (var object in data) {
-            if (data[object][pid] == "" || data[object][pid] == null) {
-                easyData.push(data[object])
-                delete data[object];
+        for (var o in data) {
+            if (data[o][pid] == "" || data[o][pid] == null) {
+                easyData.push(data[o])
+                delete data[o];
             }
         }
         for (var pObject in easyData) {
             easyData[pObject]["children"] = [];
-            for (var object in data) {
-                if (data[object][pid] == easyData[pObject][id]) {
-                    easyData[pObject]["children"].push(data[object]);
-                    delete data[object];
+            for (var o in data) {
+                if (data[o][pid] == easyData[pObject][id]) {
+                    easyData[pObject]["children"].push(data[o]);
+                    delete data[o];
                 }
             }
         }
         return easyData;
+    },
+    LTreeToOTree: function (data, id, pid, text) {
+        var treeData = [];
+        for (var o in data) {
+            if (data[o][pid] == "" || data[o][pid] == null) {
+                treeData.push({
+                    id: data[o][id],
+                    text: data[o][text],
+                    attributes: data[o]
+                });
+                delete data[o];
+            }
+        }
+        for (var po in treeData) {
+            treeData[po]["children"] = [];
+            for (var o in data) {
+                if (data[o][pid] == treeData[po][id]) {
+                    treeData[po]["children"].push({
+                        id: data[o][id],
+                        text: data[o][text],
+                        attributes: data[o]
+                    });
+                    delete data[o];
+                }
+            }
+        }
+        return treeData;
     }
 
 }

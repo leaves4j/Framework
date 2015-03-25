@@ -44,7 +44,7 @@ public class WelcomeController {
         }
         System.out.println("--------request.getHeader()--------");
         ModelAndView mv = new ModelAndView();
-        mv.setViewName("FrameWork/welcome");
+        mv.setViewName("FrameWork/jsp/welcome");
         return mv;
     }
 }

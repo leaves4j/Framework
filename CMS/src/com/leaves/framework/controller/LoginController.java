@@ -1,6 +1,7 @@
 package com.leaves.framework.controller;
 
-import com.leaves.framework.common.controller.CurrentContext;
+import com.leaves.framework.common.CurrentContext;
+import com.leaves.framework.model.Role;
 import com.leaves.framework.model.User;
 import com.leaves.framework.service.ILoginService;
 import org.springframework.stereotype.Controller;
@@ -13,6 +14,7 @@ import javax.servlet.http.HttpSession;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.Set;
 
 
 /**
@@ -27,8 +29,7 @@ public class LoginController {
     public ModelAndView getLoginPage(Model model) {
 
         ModelAndView mv = new ModelAndView();
-        mv.addObject("userList", "测试下");
-        mv.setViewName("FrameWork/login");
+        mv.setViewName("FrameWork/view/login");
         return mv;
     }
 
@@ -44,9 +45,14 @@ public class LoginController {
             modelMap.put("state", "true");
             CurrentContext context = new CurrentContext();
             User user = users.get(0);
+            Set<Role> roles = user.getRoles();
+            for (Role role : roles) {
+                role.setFunctions(null);
+            }
             context.setUseCode(user.getCode());
             context.setUserId(user.getId());
             context.setUserName(user.getName());
+            context.setRoles(roles);
             session.setAttribute("Sys_CurrentContext", context);
         } else {
             modelMap.put("state", "false");

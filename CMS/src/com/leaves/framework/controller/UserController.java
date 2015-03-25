@@ -36,7 +36,7 @@ public class UserController {
         List<Role> roles = roleService.findAll();
         ModelAndView mv = new ModelAndView();
         mv.addObject("roles", roles);
-        mv.setViewName("FrameWork/JSP/user");
+        mv.setViewName("FrameWork/view/user");
         return mv;
     }
 

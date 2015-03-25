@@ -24,7 +24,7 @@ public class RoleController {
     @RequestMapping(value = "framework/roles", method = RequestMethod.GET)
     public ModelAndView getRolePage(Model model) {
         ModelAndView mv = new ModelAndView();
-        mv.setViewName("FrameWork/JSP/role");
+        mv.setViewName("FrameWork/view/role");
         return mv;
     }
 

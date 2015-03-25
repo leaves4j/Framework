@@ -19,7 +19,7 @@ $(function () {
             data: {code: code, password: password},
             success: function (data) {
                 if (data.state=="true") {
-                    window.location.href = "framework";
+                    window.location.href = "index";
                 }
                 else {
                     $("#message").text(data.msg);

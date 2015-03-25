@@ -51,8 +51,6 @@
         <property name="packagesToScan">
             <list>
                 <value>com.leaves.framework.model</value>
-                <!--<value>com.leaves.framework.model.Role</value>-->
-                <!--<value>com.leaves.framework.model.Function</value>-->
             </list>
         </property>
 

@@ -1,5 +1,7 @@
 package com.leaves.framework.common.annotation;
 
+import com.leaves.framework.common.Authority;
+
 import java.lang.annotation.*;
 
 /**
@@ -9,10 +11,11 @@ import java.lang.annotation.*;
  * Description:
  */
 
-@Target({ElementType.PARAMETER, ElementType.METHOD})
+@Target({ElementType.TYPE, ElementType.METHOD})
 @Retention(RetentionPolicy.RUNTIME)
 @Documented
-public @interface SystemControllerLog {
-    String description() default "";
+public @interface Auth {
+    String[] value() default "";
+    Class authClass() default Authority.class;
 }
 

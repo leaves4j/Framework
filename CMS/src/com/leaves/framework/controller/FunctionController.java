@@ -21,19 +21,11 @@ public class FunctionController {
     @Resource(name = "functionService")
     IFunctionService functionService;
 
-    @RequestMapping(value = "framework/menu", method = RequestMethod.GET)
-    public ModelAndView getMenuList(Model model) {
-
-        ModelAndView mv = new ModelAndView();
-        mv.setViewName("FrameWork/JSP/menu");
-        return mv;
-    }
-
     @RequestMapping(value = "framework/functions", method = RequestMethod.GET)
     public ModelAndView getFunctionPage(Model model) {
 
         ModelAndView mv = new ModelAndView();
-        mv.setViewName("FrameWork/JSP/function");
+        mv.setViewName("FrameWork/view/function");
         return mv;
     }
 

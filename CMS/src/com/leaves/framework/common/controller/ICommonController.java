@@ -1,5 +1,11 @@
 package com.leaves.framework.common.controller;
 
+import org.springframework.web.method.HandlerMethod;
+
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
+
 /**
  * User: jiangq
  * Date: 2015/1/7
@@ -8,11 +14,5 @@ package com.leaves.framework.common.controller;
  */
 public interface ICommonController {
 
-    boolean getNeedLogin();
-
-    String getRedirectURL();
-
-    void setCurrentContext(CurrentContext context);
-
-    void setLog(String info);
+     boolean preHandler(HttpServletRequest request, HttpServletResponse response, HandlerMethod handler) throws Exception;
 }

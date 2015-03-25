@@ -4,14 +4,12 @@ import java.lang.annotation.*;
 
 /**
  * User: jiangq
- * Date: 2015/1/7
- * Time: 10:45
+ * Date: 2015/3/24
+ * Time: 13:33
  * Description:
  */
-@Target({ElementType.PARAMETER, ElementType.METHOD})
+@Target({ElementType.FIELD})
 @Retention(RetentionPolicy.RUNTIME)
 @Documented
-public @interface SystemServiceLog {
-    String description()  default "";
+public @interface CurrentUser {
 }
-

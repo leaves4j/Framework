@@ -3,6 +3,9 @@
   Date: 2014/8/29
   Time: 15:36
 --%>
+<%@ page import="com.leaves.framework.model.Function" %>
+<%@ page import="java.util.List" %>
+<%@ page import="java.util.ArrayList" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <!DOCTYPE html>
 <html lang="en">
@@ -21,7 +24,8 @@
 <body style="width: 100%;height: 100%;">
 <div></div>
 <div id="loading"
-     style="position: fixed;height: 100%;width: 100%;z-index: 99999;background-color: #ffffff;text-align:center" align="center">
+     style="position: fixed;height: 100%;width: 100%;z-index: 99999;background-color: #ffffff;text-align:center"
+     align="center">
     <img src="static/Images/294.GIF">
 </div>
 <div class="easyui-layout" style="width: 100%;height: 100%;" fit="true">
@@ -30,7 +34,48 @@
     </div>
     <%--<div id="footer" data-options="region:'south'"></div>--%>
     <div id="function" style="width: 200px" data-options="region:'west',headerCls:'menu-header',title:'菜单'">
-        <jsp:include page="/framework/menu"></jsp:include>
+        <ul id="menu">
+            <%
+                @SuppressWarnings("unchecked")
+                List<Function> functions = (List<Function>) request.getAttribute("functions");
+                List<Function> pFunctions = new ArrayList<Function>();
+                List<Function> cFunctions = new ArrayList<Function>();
+                for (Function function : functions) {
+                    if (function.getPath() == null)
+                        pFunctions.add(function);
+                    else
+                        cFunctions.add(function);
+                }
+                for(Function function:pFunctions){
+                    out.write("<li>");
+                    out.write("<div class=\"title\"><i class=\""+function.getIcon()+"\"></i>"+function.getName()+"<i class=\"fa fa-chevron-down\"></i></div>");
+                    out.write("<ul class=\"item\">");
+                    for (Function cFunction:cFunctions){
+                        if(cFunction.getPath().equals(function.getId()))
+                        out.write("<li><a data-value=\""+cFunction.getId()+"\" data-uri=\""+cFunction.getUri()+"\">"+cFunction.getName()+"</a></li>");
+                    }
+                    out.write("</ul>");
+                    out.write("</li>");
+                }
+            %>
+            <%--<li>--%>
+                <%--<div class="title"><i class="fa fa-paint-brush"></i>基础设置<i class="fa fa-chevron-down"></i></div>--%>
+                <%--<ul class="item">--%>
+                    <%--<li><a data-value="yhgl" data-uri="framework/users">用户管理</a></li>--%>
+                    <%--<li><a data-value="gngl" data-uri="framework/functions" data-title="功能管理">功能管理</a></li>--%>
+                    <%--<li><a data-value="jsgl" data-uri="framework/roles" data-title="角色管理">角色管理</a></li>--%>
+                <%--</ul>--%>
+            <%--</li>--%>
+            <%--<li>--%>
+                <%--<div class="title"><i class="fa fa-paint-brush"></i>基础设置<i class="fa fa-chevron-down"></i></div>--%>
+                <%--<ul class="item">--%>
+                    <%--<li><a>基础设置</a></li>--%>
+                    <%--<li><a href="#">菜单菜单2</a></li>--%>
+                    <%--<li><a href="#">CSS</a></li>--%>
+                    <%--<li><a href="#">Maquetacion web</a></li>--%>
+                <%--</ul>--%>
+            <%--</li>--%>
+        </ul>
     </div>
     <div id="main" data-options="region:'center'">
         <div id="main-tabs" class="easyui-tabs" style="width:100%;height:100%" data-options="fit:true,border:false">

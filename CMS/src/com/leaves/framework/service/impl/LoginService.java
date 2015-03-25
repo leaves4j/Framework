@@ -3,6 +3,7 @@ package com.leaves.framework.service.impl;
 import com.leaves.framework.dao.impl.UserDao;
 import com.leaves.framework.model.User;
 import com.leaves.framework.service.ILoginService;
+import org.hibernate.Hibernate;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -23,6 +24,11 @@ public class LoginService implements ILoginService {
 
     @Override
     public List<User> getUser(String code) {
-        return userDao.findByCode(code);
+        List<User> users = userDao.findByCode(code);
+        for (User user : users) {
+            Hibernate.initialize(user.getRoles());
+        }
+        return users;
+
     }
 }

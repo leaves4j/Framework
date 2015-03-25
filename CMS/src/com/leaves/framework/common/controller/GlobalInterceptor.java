@@ -1,12 +1,12 @@
 package com.leaves.framework.common.controller;
 
-
+import com.leaves.framework.common.annotation.Auth;
+import org.springframework.web.method.HandlerMethod;
 import org.springframework.web.servlet.handler.HandlerInterceptorAdapter;
-
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
+import java.lang.reflect.Method;
 
 /**
  * User: jiangq
@@ -18,26 +18,19 @@ public class GlobalInterceptor extends HandlerInterceptorAdapter {
     @Override
     public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler)
             throws Exception {
-        if (handler instanceof ICommonController) {
-            ICommonController commonController = (ICommonController) handler;
-            Object session = request.getSession().getAttribute("Sys_CurrentContext");
-            CurrentContext context = session == null ? null : (CurrentContext) session;
-            if (context == null && commonController.getNeedLogin()) {
 
-                //普通请求返回重定向，ajax请求返回401
-                if (request.getHeader("X-Requested-With") == null)
-                    response.sendRedirect(commonController.getRedirectURL());
-                else
-                    response.setStatus(401);
-                return false;
-            } else {
-                commonController.setCurrentContext(context);
-                commonController.setLog("");
-                return super.preHandle(request, response, handler);
-            }
+        if (handler instanceof HandlerMethod) {
+            Auth auth = ((HandlerMethod) handler).getBeanType().getAnnotation(Auth.class);
+            if (auth != null) {
+                @SuppressWarnings("unchecked")
+                Method method = auth.authClass().getMethod("preHandler",
+                        HttpServletRequest.class, HttpServletResponse.class, HandlerMethod.class);
+                return (Boolean) method.invoke(auth.authClass().newInstance(), request, response, handler);
+            } else return super.preHandle(request, response, handler);
         } else {
             return super.preHandle(request, response, handler);
         }
     }
+
 }
 

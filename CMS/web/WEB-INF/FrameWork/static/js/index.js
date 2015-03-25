@@ -41,7 +41,7 @@ $(function () {
         $(this).addClass("selected");
         var link = $(this).children("a");
         var id = link.attr("data-value");
-        var title = link.attr("data-title");
+        var title = link.text();
         var uri = link.attr('data-uri');
         if ($('#main-tabs').tabs("exists", title)) {
             $('#main-tabs').tabs("select", title)

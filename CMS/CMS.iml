@@ -140,5 +140,28 @@
     <orderEntry type="library" scope="PROVIDED" name="Tomcat 8.0.15" level="application_server_libraries" />
     <orderEntry type="library" name="org.codehaus.jackson:jackson-core-asl:1.9.12" level="project" />
     <orderEntry type="library" name="org.codehaus.jackson:jackson-mapper-asl:1.9.13" level="project" />
+    <orderEntry type="module-library">
+      <library name="log4j-2.2">
+        <CLASSES>
+          <root url="jar://$MODULE_DIR$/lib/log4j-api-2.2.jar!/" />
+          <root url="jar://$MODULE_DIR$/lib/log4j-core-2.2.jar!/" />
+          <root url="jar://$MODULE_DIR$/lib/log4j-slf4j-impl-2.2.jar!/" />
+          <root url="file://$MODULE_DIR$/.." />
+        </CLASSES>
+        <JAVADOC />
+        <SOURCES>
+          <root url="file://$MODULE_DIR$/src" />
+        </SOURCES>
+      </library>
+    </orderEntry>
+    <orderEntry type="module-library">
+      <library name="slf4j-api-1.7.10">
+        <CLASSES>
+          <root url="jar://$MODULE_DIR$/lib/slf4j-api-1.7.10.jar!/" />
+        </CLASSES>
+        <JAVADOC />
+        <SOURCES />
+      </library>
+    </orderEntry>
   </component>
 </module>

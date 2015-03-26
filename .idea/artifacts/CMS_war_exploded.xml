@@ -12,9 +12,10 @@
           <element id="library" level="module" name="Spring MVC-4.0.6.RELEASE" module-name="CMS" />
           <element id="library" level="module" name="Spring Web Services-2.0.2" module-name="CMS" />
           <element id="library" level="module" name="Spring-4.0.6.RELEASE" module-name="CMS" />
-          <element id="library" level="module" name="aspect" module-name="CMS" />
           <element id="library" level="project" name="org.codehaus.jackson:jackson-core-asl:1.9.12" />
           <element id="library" level="project" name="org.codehaus.jackson:jackson-mapper-asl:1.9.13" />
+          <element id="library" level="module" name="log4j-2.2" module-name="CMS" />
+          <element id="library" level="module" name="slf4j-api-1.7.10" module-name="CMS" />
         </element>
         <element id="directory" name="classes">
           <element id="module-output" name="CMS" />

@@ -3,14 +3,19 @@
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_3_1.xsd"
          version="3.1">
-    <display-name>管理系统</display-name>
+    <display-name>CMS</display-name>
     <context-param>
         <param-name>contextConfigLocation</param-name>
         <param-value>WEB-INF/applicationContext.xml</param-value>
     </context-param>
+    <context-param>
+        <param-name>log4jConfiguration</param-name>
+        <param-value>WEB-INF/log4j2.xml</param-value>
+    </context-param>
     <listener>
         <listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
     </listener>
+
     <!-- 定义DispatcherServlet -->
     <servlet>
         <servlet-name>mvc-dispatcher</servlet-name>
@@ -21,15 +26,15 @@
         </init-param>
         <load-on-startup>1</load-on-startup>
     </servlet>
+    <!-- 拦截匹配的请求，这里所有请求采用名字为mvc-dispatcher的DispatcherServlet处理 -->
     <servlet-mapping>
         <servlet-name>mvc-dispatcher</servlet-name>
         <url-pattern>/</url-pattern>
     </servlet-mapping>
-    <!--字符编码过滤-->
+
     <filter>
         <filter-name>encodingFilter</filter-name>
         <filter-class>org.springframework.web.filter.CharacterEncodingFilter</filter-class>
-
         <init-param>
             <param-name>encoding</param-name>
             <param-value>UTF-8</param-value>

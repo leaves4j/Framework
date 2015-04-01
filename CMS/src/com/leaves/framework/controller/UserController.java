@@ -13,6 +13,8 @@ import org.springframework.web.servlet.ModelAndView;
 
 import javax.annotation.Resource;
 import java.io.StringReader;
+import java.security.MessageDigest;
+import java.security.NoSuchAlgorithmException;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
@@ -61,7 +63,11 @@ public class UserController {
 
     @RequestMapping(value = "framework/user", method = RequestMethod.POST)
     @ResponseBody
-    public String addUser(@RequestBody User user) {
+    public String addUser(@RequestBody User user) throws NoSuchAlgorithmException {
+        MessageDigest md = MessageDigest.getInstance("MD5");
+        md.update(user.getPassword().getBytes());
+        String pdwMD5 = CommonFunction.ByteArrayToHexString(md.digest());
+        user.setPassword(pdwMD5);
         return userService.addOrUpdate(user);
     }
 

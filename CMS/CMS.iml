@@ -146,18 +146,24 @@
           <root url="jar://$MODULE_DIR$/lib/log4j-api-2.2.jar!/" />
           <root url="jar://$MODULE_DIR$/lib/log4j-core-2.2.jar!/" />
           <root url="jar://$MODULE_DIR$/lib/log4j-slf4j-impl-2.2.jar!/" />
-          <root url="file://$MODULE_DIR$/.." />
         </CLASSES>
         <JAVADOC />
-        <SOURCES>
-          <root url="file://$MODULE_DIR$/src" />
-        </SOURCES>
+        <SOURCES />
       </library>
     </orderEntry>
     <orderEntry type="module-library">
       <library name="slf4j-api-1.7.10">
         <CLASSES>
           <root url="jar://$MODULE_DIR$/lib/slf4j-api-1.7.10.jar!/" />
+        </CLASSES>
+        <JAVADOC />
+        <SOURCES />
+      </library>
+    </orderEntry>
+    <orderEntry type="module-library">
+      <library>
+        <CLASSES>
+          <root url="jar://$MODULE_DIR$/lib/bcprov-jdk15on-152.jar!/" />
         </CLASSES>
         <JAVADOC />
         <SOURCES />

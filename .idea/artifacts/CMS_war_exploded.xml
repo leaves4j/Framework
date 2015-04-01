@@ -16,6 +16,7 @@
           <element id="library" level="project" name="org.codehaus.jackson:jackson-mapper-asl:1.9.13" />
           <element id="library" level="module" name="log4j-2.2" module-name="CMS" />
           <element id="library" level="module" name="slf4j-api-1.7.10" module-name="CMS" />
+          <element id="file-copy" path="$PROJECT_DIR$/CMS/lib/bcprov-jdk15on-152.jar" />
         </element>
         <element id="directory" name="classes">
           <element id="module-output" name="CMS" />

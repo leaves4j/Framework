@@ -149,7 +149,7 @@ iframe {
 
 #menu li i {
     position: absolute;
-    top: 8px;
+    top: 10px;
     left: 12px;
     font-size: 14px;
     color: #4D4D4D;
@@ -161,14 +161,14 @@ iframe {
 #menu li i.fa-chevron-down {
     right: 12px;
     left: auto;
-    font-size: 16px;
+    font-size: 14px;
 }
 
 #menu li .open {
-    color: #ff7d23;
+    /*color: #ff7d23;*/
     /*background-color: #2673ec;*/
     /*border-bottom: 0;*/
-    font-weight: normal;
+    /*font-weight: normal;*/
 }
 
 #menu li:first-child .open {

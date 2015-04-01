@@ -16,7 +16,7 @@ $(function () {
             type: "POST",
             dataType:"json",
             url: "login",
-            data: {code: code, password: password},
+            data: {code: code, password: RSAEncrypt(password)},
             success: function (data) {
                 if (data.state=="true") {
                     window.location.href = "index";

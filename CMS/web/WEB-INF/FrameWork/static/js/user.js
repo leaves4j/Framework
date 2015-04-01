@@ -25,7 +25,7 @@ function editUser() {
     var row = $('#userlist').datagrid('getSelected');
     if (row) {
         row.createTime = formatDate(row.createTime);
-        row.password="******";
+        row.password = "******";
         $('#dlg').dialog('open').dialog('setTitle', '修改');
         $('#user').form('load', row);
         $("[mame='code']").attr("readonly", "readonly");
@@ -50,6 +50,7 @@ function saveUser() {
     if (data.id == "") delete data.id;
     if (data.state == "") data.state = 0;
     if (data.password == "******") delete data.password;
+    else data.password = RSAEncrypt(data.password);
     var selected = $('#roles').combobox("getValues");
     data.roles = [];
     for (var i in selected) {

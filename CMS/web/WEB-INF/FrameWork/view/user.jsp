@@ -102,6 +102,16 @@
     <a class="easyui-linkbutton" iconCls="fa fa-times"
        onclick="javascript:$('#dlg').dialog('close')" style="width:90px">取消</a>
 </div>
+<script type="text/javascript">
+    function RSAEncrypt(pwd) {
+//        setMaxDigits(130);
+        <%--var key = new RSAKeyPair("${public_exponent}", "${public_modulus}", 1024, 10);--%>
+        var pwdMD5 = CryptoJS.SHA256(CryptoJS.SHA256(pwd).toString()).toString();
+//        var pwdRSA = encryptedString(key, pwdMD5);
+
+        return pwdMD5;
+    }
+</script>
 </body>
 <link href="../lib/font-awesome-4.3.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
 <link href="../lib/jquery-easyui-1.4.1/themes/own/easyui.css" rel="stylesheet" type="text/css">
@@ -114,6 +124,7 @@
 <script src="../lib/jquery/jquery-1.11.2.min.js"></script><![endif]-->
 <script src="../lib/jquery-easyui-1.4.1/jquery.easyui.min.js"></script>
 <script src="../lib/jquery-easyui-1.4.1/locale/easyui-lang-zh_CN.js"></script>
+<script src="../lib/CryptoJS-v3.1.2/rollups/sha256.js"></script>
 <script src="../static/js/Framework.js"></script>
 <script src="../static/js/user.js"></script>
 </html>

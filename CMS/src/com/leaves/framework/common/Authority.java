@@ -38,7 +38,6 @@ public class Authority implements ICommonController {
                     field.set(handler.getBean(), session);
                 }
             }
-            //TODO 登陆日志写入
             return true;
         }
     }

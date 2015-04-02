@@ -8,12 +8,6 @@ $(function () {
             content: '<iframe id="' + id + '" src="' + url + '" frameborder=no border=0></iframe>',
             closable: true
         });
-        $('#' + id).bind('ready', function () {
-            var instance = this.contentWindow.jQuery;
-            var doc = this.contentWindow.document;
-            instance(doc).ajaxError(ajaxRedirectListener);
-        });
-
     }
 
     // addTabs('欢迎', '/welcome',"welcome_i");
@@ -46,8 +40,8 @@ $(function () {
         if ($('#main-tabs').tabs("exists", title)) {
             $('#main-tabs').tabs("select", title)
         }
-        else{
-            addTabs(title,uri,id);
+        else {
+            addTabs(title, uri, id);
         }
 
     });

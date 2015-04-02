@@ -35,7 +35,7 @@ $.fn.extend({
         });
         return o;
     }
-})
+});
 var fw = {
     post: function (url, data, success, type) {
         $.ajax({
@@ -125,4 +125,18 @@ var fw = {
         return treeData;
     }
 
+};
+if ($.parser) {
+    $.parser.onComplete = function () {
+        $('#loading').hide();
+    };
 }
+$(function () {
+    $(document).ajaxError(ajaxRedirectListener);
+    function ajaxRedirectListener(e, jqXHR, ajaxOptions, err) {
+        if (jqXHR.status == 401)
+            $.message.alert("提示", "您的登陆信息已经过期，请重新登陆", "info", function () {
+                window.location.href = '/login'
+            })
+    }
+});

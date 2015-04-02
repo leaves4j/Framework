@@ -26,7 +26,8 @@
 <div id="loading"
      style="position: fixed;height: 100%;width: 100%;z-index: 99999;background-color: #ffffff;text-align:center"
      align="center">
-    <img src="static/Images/294.GIF">
+    <img style="overflow: auto;margin: auto;position: absolute;top: 0; left: 0; bottom: 0; right: 0;"
+         src="static/Images/294.GIF">
 </div>
 <div class="easyui-layout" style="width: 100%;height: 100%;" fit="true">
     <div id="header" data-options="region:'north'">
@@ -46,13 +47,13 @@
                     else
                         cFunctions.add(function);
                 }
-                for(Function function:pFunctions){
+                for (Function function : pFunctions) {
                     out.write("<li>");
-                    out.write("<div class=\"title\"><i class=\""+function.getIcon()+"\"></i>"+function.getName()+"<i class=\"fa fa-chevron-down\"></i></div>");
+                    out.write("<div class=\"title\"><i class=\"" + function.getIcon() + "\"></i>" + function.getName() + "<i class=\"fa fa-chevron-down\"></i></div>");
                     out.write("<ul class=\"item\">");
-                    for (Function cFunction:cFunctions){
-                        if(cFunction.getPath().equals(function.getId()))
-                        out.write("<li><a data-value=\""+cFunction.getId()+"\" data-uri=\""+cFunction.getUri()+"\">"+cFunction.getName()+"</a></li>");
+                    for (Function cFunction : cFunctions) {
+                        if (cFunction.getPath().equals(function.getId()))
+                            out.write("<li><a data-value=\"" + cFunction.getId() + "\" data-uri=\"" + cFunction.getUri() + "\">" + cFunction.getName() + "</a></li>");
                     }
                     out.write("</ul>");
                     out.write("</li>");

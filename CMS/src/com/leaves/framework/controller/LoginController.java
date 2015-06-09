@@ -60,8 +60,6 @@ public class LoginController {
 //        //获取rsa加密的密码
 //        RSAPrivateKey privateKey = (RSAPrivateKey) session.getAttribute("Sys_RSA_PrivateKey");
 //        String descrypedPwd = RSAUtil.decryptByPrivateKey(password, privateKey);
-//        //获取密码的SHA-256摘要值
-//        MessageDigest md = MessageDigest.getInstance("SHA-256");
         MessageDigest md = MessageDigest.getInstance("MD5");
         md.update(password.getBytes());
         String pdwMD5 = CommonFunction.ByteArrayToHexString(md.digest());

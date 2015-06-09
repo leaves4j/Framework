@@ -10,6 +10,8 @@ import org.springframework.web.method.HandlerMethod;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.HandlerExceptionResolver;
 
+import java.util.UUID;
+
 /**
  * User: jiangq
  * Date: 2015/2/5
@@ -20,14 +22,18 @@ public class ExceptionHandler implements HandlerExceptionResolver {
     @Override
     public ModelAndView resolveException(HttpServletRequest renderRequest, HttpServletResponse renderResponse, Object o, Exception e) {
         //TODO 异常处理页面、异常日志写入
+        String uuid = UUID.randomUUID().toString();
         Logger logger;
         if (o instanceof HandlerMethod) {
             logger = LoggerFactory.getLogger("");
-            logger.error(((HandlerMethod) o).getBeanType().getName(), e);
+            logger.error("uuid:" + uuid + " \n " + ((HandlerMethod) o).getBeanType().getName(), e);
         } else {
             logger = LoggerFactory.getLogger(o.getClass());
-            logger.error(o.getClass().getName(), e);
+            logger.error("uuid:" + uuid + " \n " +o.getClass().getName(), e);
         }
-        return null;
+        ModelAndView mv = new ModelAndView();
+        mv.addObject("uuid",uuid);
+        mv.setViewName("FrameWork/view/error");
+        return mv;
     }
 }

@@ -10,6 +10,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <title>管理系统</title>
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
     <meta charset="utf-8"/>
     <title></title>
